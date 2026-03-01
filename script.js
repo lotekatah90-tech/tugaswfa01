@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1.5 Sidebar Collapse Logic
     const sidebar = document.getElementById('sidebar');
     const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
 
     if (sidebarToggleBtn && sidebar) {
         sidebarToggleBtn.addEventListener('click', () => {
@@ -59,6 +61,24 @@ document.addEventListener('DOMContentLoaded', () => {
             sidebar.classList.add('collapsed');
             sidebarToggleBtn.setAttribute('aria-expanded', 'false');
         }
+    }
+
+    // Mobile Sidebar Toggle
+    if (mobileMenuBtn && sidebar && sidebarOverlay) {
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.add('mobile-open');
+            sidebarOverlay.classList.add('show');
+            sidebarOverlay.setAttribute('aria-hidden', 'false');
+            // Try to set focus within sidebar
+            const firstFocusable = sidebar.querySelector('a, button');
+            if (firstFocusable) firstFocusable.focus();
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            sidebar.classList.remove('mobile-open');
+            sidebarOverlay.classList.remove('show');
+            sidebarOverlay.setAttribute('aria-hidden', 'true');
+        });
     }
 
     // 2. FAQ Accordion Logic (WCAG Compliant)

@@ -20,6 +20,9 @@
 
 <body class="light-theme">
     <div class="app-container">
+        <!-- Overlay for mobile sidebar -->
+        <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
         <!-- Sidebar Navigation -->
         <nav class="sidebar" id="sidebar" aria-label="Navigasi Utama">
             <div class="sidebar-header">
@@ -76,6 +79,9 @@
         <main class="main-content" id="main-content" tabindex="-1">
             <!-- Header -->
             <header class="top-header">
+                <button class="mobile-menu-btn icon-btn" id="mobile-menu-btn" aria-label="Buka Navigasi">
+                    <i class="ph ph-list" aria-hidden="true"></i>
+                </button>
                 <div class="search-wrap">
                     <i class="ph ph-magnifying-glass search-icon" aria-hidden="true"></i>
                     <label for="global-search" class="visually-hidden">Cari di dashboard</label>
