@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard Tugas WFA - UI/UX yang mematuhi standar WCAG untuk Konten Kreator.">
+    <title>VIP Member - Tugas WFA 01</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="light-theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar" aria-label="Navigasi Utama">
+            <div class="sidebar-header">
+                <i class="ph-fill ph-infinity logo-icon" aria-hidden="true"></i>
+                <span class="logo-text">CreatorHub</span>
+                <button class="sidebar-toggle-btn" id="sidebar-toggle" aria-label="Perkecil Navigasi"
+                    aria-expanded="true">
+                    <i class="ph ph-list" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="#dashboard" class="active" aria-current="page">
+                        <i class="ph ph-squares-four" aria-hidden="true"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#analytics">
+                        <i class="ph ph-chart-line-up" aria-hidden="true"></i>
+                        <span>Analitik</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#platforms">
+                        <i class="ph ph-share-network" aria-hidden="true"></i>
+                        <span>Platform</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#components">
+                        <i class="ph ph-puzzle-piece" aria-hidden="true"></i>
+                        <span>Komponen UI (WCAG)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#faq">
+                        <i class="ph ph-question" aria-hidden="true"></i>
+                        <span>FAQ UI/UX</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <button class="theme-toggle" id="themeToggleBtn" aria-label="Ganti ke Mode Gelap">
+                    <i class="ph ph-moon" aria-hidden="true"></i>
+                    <span id="themeToggleText">Mode Gelap</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content" tabindex="-1">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-wrap">
+                    <i class="ph ph-magnifying-glass search-icon" aria-hidden="true"></i>
+                    <label for="global-search" class="visually-hidden">Cari di dashboard</label>
+                    <input type="search" id="global-search" placeholder="Cari analitik, video, dll..."
+                        class="search-input">
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" aria-label="Notifikasi, 3 pesan baru">
+                        <i class="ph ph-bell" aria-hidden="true"></i>
+                        <span class="badge" aria-hidden="true">3</span>
+                    </button>
+                    <button class="profile-btn" aria-haspopup="menu" aria-expanded="false"
+                        aria-label="Menu Profil Pengguna">
+                        <img src="https://ui-avatars.com/api/?name=Content+Creator&background=random" alt=""
+                            class="avatar">
+                        <div class="profile-info">
+                            <span class="profile-name">Halo, Kreator!</span>
+                            <span class="profile-role">Multi-Platform</span>
+                        </div>
+                        <i class="ph ph-caret-down" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Page Title & Breadcrumb -->
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <ol>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><span aria-current="page">Performa Creator</span></li>
+                    </ol>
+                </nav>
+                <div class="page-header" id="dashboard">
+                    <h1>Ringkasan Performa</h1>
+                    <p>Pantau metrik dari TikTok, YouTube, dan Instagram Anda.</p>
+                </div>
+
+                <!-- Info Banner -->
+                <div class="info-banner" role="banner">
+                    <div class="banner-content">
+                        <h3>🎉 Fitur Monetisasi Baru Tersedia!</h3>
+                        <p>Anda kini memenuhi syarat untuk program YouTube Shorts Fund. Aktifkan sekarang di pengaturan.
+                        </p>
+                    </div>
+                    <button class="btn btn-primary btn-sm">Pelajari Lebih Lanjut</button>
+                </div>
+
+                <!-- Stats Grid -->
+                <section class="stats-grid" aria-label="Statistik Utama">
+                    <article class="stat-card">
+                        <div class="stat-icon-wrap var-youtube">
+                            <i class="ph ph-youtube-logo" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h2 class="stat-title">Total Subscriber</h2>
+                            <p class="stat-value">1,204,500</p>
+                            <span class="stat-change positive">
+                                <i class="ph ph-trend-up" aria-hidden="true"></i>
+                                <span class="visually-hidden">Naik</span> 12% bulan ini
+                            </span>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon-wrap var-tiktok">
+                            <i class="ph ph-tiktok-logo" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h2 class="stat-title">Followers TikTok</h2>
+                            <p class="stat-value">3,540,200</p>
+                            <span class="stat-change positive">
+                                <i class="ph ph-trend-up" aria-hidden="true"></i>
+                                <span class="visually-hidden">Naik</span> 24% bulan ini
+                            </span>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon-wrap var-instagram">
+                            <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h2 class="stat-title">Reach Instagram</h2>
+                            <p class="stat-value">850,000</p>
+                            <span class="stat-change negative">
+                                <i class="ph ph-trend-down" aria-hidden="true"></i>
+                                <span class="visually-hidden">Turun</span> 3% bulan ini
+                            </span>
+                        </div>
+                    </article>
+
+                    <article class="stat-card">
+                        <div class="stat-icon-wrap var-engagement">
+                            <i class="ph ph-fire" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h2 class="stat-title">Rata-rata Engagement</h2>
+                            <p class="stat-value">8.4%</p>
+                            <span class="stat-change positive">
+                                <i class="ph ph-trend-up" aria-hidden="true"></i>
+                                <span class="visually-hidden">Naik</span> 1.2% bulan ini
+                            </span>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- Charts & Progress Section -->
+                <section class="charts-section" aria-label="Grafik Analitik" id="analytics">
+                    <div class="form-grid-2">
+                        <div class="chart-container card">
+                            <div class="card-header">
+                                <h2>Pertumbuhan Penonton (30 Hari Terakhir)</h2>
+                                <div class="custom-select">
+                                    <label for="chart-filter" class="visually-hidden">Filter Waktu Grafik</label>
+                                    <select id="chart-filter">
+                                        <option value="30">30 Hari Terakhir</option>
+                                        <option value="90">90 Hari Terakhir</option>
+                                        <option value="365">1 Tahun</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="canvas-wrap">
+                                <canvas id="growthChart"
+                                    aria-label="Grafik garis yang menunjukkan pertumbuhan di YouTube, TikTok, dan Instagram"
+                                    role="img"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Progress & Goals Tracking -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Target Pencapaian (Goals)</h2>
+                            </div>
+                            <div class="goals-container">
+                                <div class="goal-item">
+                                    <div class="goal-header">
+                                        <span class="goal-title">Subs. YouTube (1.5M Goal)</span>
+                                        <span class="table-badge badge-success">On Track</span>
+                                    </div>
+                                    <div class="progress-wrapper">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="80"
+                                            aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-fill"
+                                                style="width: 80%; background-color: var(--yt-color);"></div>
+                                        </div>
+                                        <span class="progress-text">80%</span>
+                                    </div>
+                                </div>
+
+                                <div class="goal-item">
+                                    <div class="goal-header">
+                                        <span class="goal-title">Sponsor Video TikTok</span>
+                                        <span class="table-badge badge-warning">Butuh Upaya</span>
+                                    </div>
+                                    <div class="progress-wrapper">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="45"
+                                            aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-fill"
+                                                style="width: 45%; background-color: var(--tt-color);"></div>
+                                        </div>
+                                        <span class="progress-text">45%</span>
+                                    </div>
+                                </div>
+
+                                <div class="goal-item">
+                                    <div class="goal-header">
+                                        <span class="goal-title">Target Upload Mingguan</span>
+                                    </div>
+                                    <div class="progress-wrapper">
+                                        <div class="progress-bar" role="progressbar" aria-valuenow="100"
+                                            aria-valuemin="0" aria-valuemax="100">
+                                            <div class="progress-fill"
+                                                style="width: 100%; background-color: var(--brand-success);"></div>
+                                        </div>
+                                        <span class="progress-text">100%</span>
+                                    </div>
+                                </div>
+
+                                <!-- Avatar Group -->
+                                <div class="team-section">
+                                    <span class="goal-title">Tim Produksi:</span>
+                                    <div class="avatar-group" aria-label="3 anggota tim">
+                                        <div class="avatar-circle">AD</div>
+                                        <div class="avatar-circle">BP</div>
+                                        <div class="avatar-circle">CX</div>
+                                        <button class="avatar-circle add-btn" aria-label="Tambah anggota tim"><i
+                                                class="ph ph-plus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- WCAG Components Section -->
+                <section class="components-section card" id="components" aria-labelledby="components-heading">
+                    <div class="card-header">
+                        <h2 id="components-heading">Komponen UI/UX Aksesibel (WCAG)</h2>
+                        <span class="badge wcag-badge">WCAG AAA Compliance</span>
+                    </div>
+                    <p class="section-desc">Contoh komponen UI yang dirancang dengan rasio kontras tinggi, state fokus
+                        yang jelas, dan indikator status yang tidak hanya mengandalkan warna.</p>
+
+                    <div class="components-grid">
+                        <div class="component-box full-width">
+                            <h3>Wizard / Stepper (Proses Multi-langkah)</h3>
+                            <nav aria-label="Proses upload video" class="stepper-nav">
+                                <ol class="stepper">
+                                    <li class="step completed">
+                                        <div class="step-circle"><i class="ph ph-check" aria-hidden="true"></i></div>
+                                        <span class="step-label">Upload File</span>
+                                    </li>
+                                    <li class="step-line completed"></li>
+                                    <li class="step active" aria-current="step">
+                                        <div class="step-circle">2</div>
+                                        <span class="step-label">Detail Metadata</span>
+                                    </li>
+                                    <li class="step-line"></li>
+                                    <li class="step">
+                                        <div class="step-circle">3</div>
+                                        <span class="step-label">Review Konten</span>
+                                    </li>
+                                    <li class="step-line"></li>
+                                    <li class="step">
+                                        <div class="step-circle">4</div>
+                                        <span class="step-label">Publikasi</span>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="component-box">
+                            <h3>Tombol Interaktif (State & Group)</h3>
+
+                            <!-- Standard Button Group -->
+                            <div class="btn-group">
+                                <button class="btn btn-primary">Primary Action</button>
+                                <button class="btn btn-secondary">Secondary Action</button>
+                                <button class="btn btn-danger">Delete Video</button>
+                            </div>
+
+                            <!-- Connected Button Group -->
+                            <div style="margin-top: 16px;">
+                                <label class="fieldset-label">Daftar Putar (Button Group Bersambung):</label>
+                                <div class="btn-group-connected" role="group" aria-label="Kontrol Daftar Putar">
+                                    <button class="btn btn-primary"><i class="ph ph-list-plus" aria-hidden="true"></i>
+                                        Tambah</button>
+                                    <button class="btn btn-primary"><i class="ph ph-pencil-simple"
+                                            aria-hidden="true"></i> Edit</button>
+                                    <button class="btn btn-primary"><i class="ph ph-trash" aria-hidden="true"></i>
+                                        Hapus</button>
+                                </div>
+                            </div>
+
+                            <!-- Loading and Disabled States -->
+                            <div class="btn-group" style="margin-top: 12px;">
+                                <button class="btn btn-primary btn-loading" disabled aria-busy="true">
+                                    <i class="ph ph-spinner-gap ph-spin" aria-hidden="true"></i> Memuat...
+                                </button>
+                                <button class="btn btn-secondary" disabled aria-disabled="true">Tombol Nonaktif</button>
+                            </div>
+                            <p class="helper-text"><i class="ph ph-info" aria-hidden="true"></i> Tekan 'Tab' pada
+                                keyboard untuk melihat ring fokus (Outline).</p>
+                        </div>
+
+                        <!-- Form Inputs -->
+                        <div class="component-box">
+                            <h3>Input Form dengan Validasi Aksesibel</h3>
+                            <form class="demo-form" novalidate onsubmit="event.preventDefault();">
+
+                                <!-- Standard Form Group -->
+                                <div class="form-group">
+                                    <label for="video-title">Judul Video <span class="required"
+                                            aria-hidden="true">*</span></label>
+                                    <input type="text" id="video-title" required aria-required="true"
+                                        aria-describedby="title-hint">
+                                    <span id="title-hint" class="hint-text">Maksimal 60 karakter untuk SEO
+                                        optimal.</span>
+                                </div>
+
+                                <!-- Error State Form Group -->
+                                <div class="form-group has-error">
+                                    <label for="video-tags">Tag / Hashtag</label>
+                                    <input type="text" id="video-tags" aria-invalid="true"
+                                        aria-describedby="tags-error">
+                                    <span id="tags-error" class="error-text" role="alert">
+                                        <i class="ph ph-warning-circle" aria-hidden="true"></i> Format tag tidak valid.
+                                        Gunakan koma untuk memisahkan.
+                                    </span>
+                                </div>
+
+                                <!-- Horizontal Form Group -->
+                                <div class="form-group-horizontal"
+                                    style="margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                                    <label for="author-alias">Alias Kreator (Form Group Horizontal)</label>
+                                    <input type="text" id="author-alias" class="form-control"
+                                        placeholder="Nama samaran (opsional)">
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Alerts -->
+                        <div class="component-box full-width">
+                            <h3>Pesan Umpan Balik (Alerts)</h3>
+                            <p class="helper-text">Pesan umpan balik harus menyertakan ikon dan teks yang jelas, bukan
+                                sekadar mengubah warna latar belakang (WCAG 1.4.1 Penggunaan Warna).</p>
+                            <div class="alert-group">
+                                <div class="alert alert-success" role="alert">
+                                    <i class="ph ph-check-circle" aria-hidden="true"></i>
+                                    <div>
+                                        <strong>Berhasil!</strong> Video berhasil diunggah ke YouTube dan TikTok.
+                                    </div>
+                                </div>
+                                <div class="alert alert-warning" role="alert">
+                                    <i class="ph ph-warning" aria-hidden="true"></i>
+                                    <div>
+                                        <strong>Peringatan Hak Cipta:</strong> Musik di menit 2:14 mungkin terkena klaim
+                                        copyright.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Extended Form Inputs -->
+                        <div class="component-box full-width">
+                            <h3>Elemen Form Lengkap (Select, Textarea)</h3>
+                            <form class="demo-form" novalidate onsubmit="event.preventDefault();">
+                                <div class="form-grid-2">
+                                    <div class="form-group">
+                                        <label for="video-category">Kategori Konten</label>
+                                        <div class="custom-select-wrapper">
+                                            <select id="video-category" class="form-control">
+                                                <option value="">Pilih kategori...</option>
+                                                <option value="edukasi">Edukasi</option>
+                                                <option value="hiburan">Hiburan</option>
+                                                <option value="vlog">Vlog Keseharian</option>
+                                                <option value="gaming">Gaming</option>
+                                            </select>
+                                            <i class="ph ph-caret-down select-icon" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="video-visibility">Visibilitas Tayang</label>
+                                        <div class="custom-select-wrapper">
+                                            <select id="video-visibility" class="form-control">
+                                                <option value="public">Publik</option>
+                                                <option value="unlisted">Tidak Publik (Unlisted)</option>
+                                                <option value="private">Pribadi</option>
+                                            </select>
+                                            <i class="ph ph-caret-down select-icon" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="video-desc">Deskripsi Video (Textarea)</label>
+                                    <textarea id="video-desc" class="form-control" rows="4"
+                                        placeholder="Tuliskan deskripsi video lengkap dengan timeline dan link afiliasi..."></textarea>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Checkboxes & Radios -->
+                        <div class="component-box">
+                            <h3>Pilihan Berganda (Checkboxes)</h3>
+                            <fieldset class="custom-fieldset">
+                                <legend class="visually-hidden">Pilih platform tujuan upload</legend>
+                                <span class="fieldset-label" aria-hidden="true">Platform Upload:</span>
+
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="platform" value="youtube" checked>
+                                    <span class="checkmark" aria-hidden="true">
+                                        <i class="ph ph-check"></i>
+                                    </span>
+                                    YouTube Shorts
+                                </label>
+
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="platform" value="tiktok" checked>
+                                    <span class="checkmark" aria-hidden="true">
+                                        <i class="ph ph-check"></i>
+                                    </span>
+                                    TikTok
+                                </label>
+
+                                <label class="custom-checkbox disabled">
+                                    <input type="checkbox" name="platform" value="instagram" disabled>
+                                    <span class="checkmark" aria-hidden="true">
+                                        <i class="ph ph-check"></i>
+                                    </span>
+                                    Instagram Reels (Maintanance)
+                                </label>
+                            </fieldset>
+
+                            <!-- Input Range Add-on -->
+                            <div style="margin-top: 24px;">
+                                <label for="volume-control" class="fieldset-label">Kecerdasan Buatan (AI)
+                                    Bantuan:</label>
+                                <input type="range" id="volume-control" class="custom-range" min="0" max="100"
+                                    value="70">
+                            </div>
+                        </div>
+
+                        <div class="component-box">
+                            <h3>Pilihan Tunggal (Radios) & Toggle Switch</h3>
+                            <fieldset class="custom-fieldset">
+                                <legend class="visually-hidden">Pilih audiens target</legend>
+                                <span class="fieldset-label" aria-hidden="true">Audiens Target:</span>
+
+                                <label class="custom-radio">
+                                    <input type="radio" name="audience" value="kids">
+                                    <span class="radiomark" aria-hidden="true"></span>
+                                    Dibuat untuk anak-anak
+                                </label>
+
+                                <label class="custom-radio">
+                                    <input type="radio" name="audience" value="adults" checked>
+                                    <span class="radiomark" aria-hidden="true"></span>
+                                    Tidak dibuat untuk anak-anak
+                                </label>
+                            </fieldset>
+
+                            <div class="toggle-group" style="margin-top: 24px;">
+                                <span class="fieldset-label" id="monetize-label">Monetisasi (Iklan):</span>
+                                <label class="toggle-switch" for="monetize-toggle">
+                                    <input type="checkbox" id="monetize-toggle" aria-labelledby="monetize-label"
+                                        checked>
+                                    <span class="slider round"></span>
+                                    <span class="visually-hidden">Aktifkan Monetisasi</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="component-box full-width">
+                            <h3>Tabel Data Aksesibel (Data Table)</h3>
+                            <div class="table-container" tabindex="0"
+                                aria-label="Tabel daftar video terbaru dengan status dan jumlah tayang">
+                                <table class="custom-table">
+                                    <caption class="visually-hidden">Daftar Video Terbaru</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Judul Video</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Tayangan</th>
+                                            <th scope="col">Tindakan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td data-label="Judul Video">Cara Cepat Belajar UI/UX #1</td>
+                                            <td data-label="Status"><span
+                                                    class="table-badge badge-success">Publik</span></td>
+                                            <td data-label="Tayangan">12,450</td>
+                                            <td data-label="Tindakan">
+                                                <button class="icon-btn btn-sm"
+                                                    aria-label="Edit Video Cara Cepat Belajar UI/UX #1"><i
+                                                        class="ph ph-pencil-simple" aria-hidden="true"></i></button>
+                                                <button class="icon-btn btn-sm text-danger"
+                                                    aria-label="Hapus Video Cara Cepat Belajar UI/UX #1"><i
+                                                        class="ph ph-trash" aria-hidden="true"></i></button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td data-label="Judul Video">Review Gadget Murah 2026</td>
+                                            <td data-label="Status"><span class="table-badge badge-warning">Draft</span>
+                                            </td>
+                                            <td data-label="Tayangan">-</td>
+                                            <td data-label="Tindakan">
+                                                <button class="icon-btn btn-sm"
+                                                    aria-label="Edit Video Review Gadget Murah 2026"><i
+                                                        class="ph ph-pencil-simple" aria-hidden="true"></i></button>
+                                                <button class="icon-btn btn-sm text-danger"
+                                                    aria-label="Hapus Video Review Gadget Murah 2026"><i
+                                                        class="ph ph-trash" aria-hidden="true"></i></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- File Upload -->
+                        <div class="component-box full-width">
+                            <h3>Area Upload File (Drag & Drop)</h3>
+                            <div class="upload-zone" id="drop-zone" tabindex="0"
+                                aria-label="Area unggah file. Tekan Enter untuk memilih file">
+                                <i class="ph ph-cloud-arrow-up upload-icon" aria-hidden="true"></i>
+                                <p class="upload-text"><strong>Klik untuk unggah</strong> atau seret dan lepas file di
+                                    sini</p>
+                                <p class="upload-hint">MP4, MOV, atau WEBM (Maks. 2GB)</p>
+                                <input type="file" id="file-upload" class="visually-hidden"
+                                    accept="video/mp4,video/quicktime,video/webm">
+                            </div>
+                        </div>
+
+                        <!-- Skeleton & Empty State -->
+                        <div class="form-grid-2 full-width">
+                            <div class="component-box">
+                                <h3>Skeleton Loading</h3>
+                                <div class="skeleton-card" aria-busy="true" aria-label="Memuat konten...">
+                                    <div class="skeleton-avatar skeleton-pulse"></div>
+                                    <div class="skeleton-lines">
+                                        <div class="skeleton-line skeleton-pulse" style="width: 80%;"></div>
+                                        <div class="skeleton-line skeleton-pulse" style="width: 50%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="component-box">
+                                <h3>Empty State (Tidak ada data)</h3>
+                                <div class="empty-state">
+                                    <div class="empty-icon-wrap">
+                                        <i class="ph ph-folder-open" aria-hidden="true"></i>
+                                    </div>
+                                    <h4>Belum Ada Video</h4>
+                                    <p>Mulai unggah video pertama Anda untuk melihat analitik.</p>
+                                    <button class="btn btn-primary" style="margin-top: 12px;">Unggah Video</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Date Picker & Advanced Inputs -->
+                        <div class="component-box full-width" style="margin-top: 24px;">
+                            <h3>Extended Form Addons (Date Picker & Input Group)</h3>
+                            <div class="form-grid-2">
+                                <div class="form-group">
+                                    <label for="schedule-date">Jadwal Publikasi</label>
+                                    <input type="datetime-local" id="schedule-date" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="video-url">URL Video Custom</label>
+                                    <div class="input-group">
+                                        <span class="input-addon">https://creator.hub/</span>
+                                        <input type="text" id="video-url" class="form-control"
+                                            placeholder="review-gadget-2026">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tabs & Timeline -->
+                        <div class="form-grid-2 full-width" style="margin-top: 24px;">
+                            <!-- Tabs (Interactive Component) -->
+                            <div class="component-box tab-component">
+                                <h3>Tab Navigasi Interaktif</h3>
+                                <div class="tab-list" role="tablist" aria-label="Pengaturan Video">
+                                    <button role="tab" aria-selected="true" aria-controls="tab-basic" id="btn-tab-basic"
+                                        class="tab-btn active">Dasar</button>
+                                    <button role="tab" aria-selected="false" aria-controls="tab-advanced"
+                                        id="btn-tab-advanced" class="tab-btn" tabindex="-1">Lanjutan</button>
+                                    <button role="tab" aria-selected="false" aria-controls="tab-monetize"
+                                        id="btn-tab-monetize" class="tab-btn" tabindex="-1">Monetisasi</button>
+                                </div>
+                                <div class="tab-panels">
+                                    <div id="tab-basic" role="tabpanel" aria-labelledby="btn-tab-basic"
+                                        class="tab-panel" tabindex="0">
+                                        <p>Konfigurasi dasar seperti judul, deskripsi, dan thumbnail ada di bagian ini.
+                                        </p>
+                                    </div>
+                                    <div id="tab-advanced" role="tabpanel" aria-labelledby="btn-tab-advanced"
+                                        class="tab-panel" hidden tabindex="0">
+                                        <p>Pengaturan lisensi, kategori spesifik, dan pengaturan komentar tersimpan di
+                                            sini.</p>
+                                    </div>
+                                    <div id="tab-monetize" role="tabpanel" aria-labelledby="btn-tab-monetize"
+                                        class="tab-panel" hidden tabindex="0">
+                                        <p>Pengaturan iklan <strong>mid-roll</strong> dan format
+                                            <strong>sponsorship</strong> dibahas pada tab ini.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Activity Timeline -->
+                            <div class="component-box">
+                                <h3>Activity Timeline</h3>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <div class="timeline-icon bg-success"><i class="ph ph-check"></i></div>
+                                        <div class="timeline-content">
+                                            <p class="timeline-title">Video berhasil dipublikasi</p>
+                                            <span class="timeline-time">Hari ini, 14:30</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-icon bg-warning"><i class="ph ph-spinner-gap"></i></div>
+                                        <div class="timeline-content">
+                                            <p class="timeline-title">Pemeriksaan hak cipta audio</p>
+                                            <span class="timeline-time">Hari ini, 14:15</span>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="timeline-icon bg-primary"><i class="ph ph-upload-simple"></i></div>
+                                        <div class="timeline-content">
+                                            <p class="timeline-title">Mulai unggah "Review Gadget #3"</p>
+                                            <span class="timeline-time">Hari ini, 14:00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal & Toast Trigger -->
+                        <div class="component-box full-width">
+                            <h3>Dialog Modal & Toast (WCAG Compliant)</h3>
+                            <div class="btn-group">
+                                <button class="btn btn-secondary" id="open-modal-btn" aria-haspopup="dialog"
+                                    aria-controls="demo-modal">Buka Modal Konfirmasi</button>
+                                <button class="btn border-btn" id="show-toast-btn">Tampilkan Toast Notifikasi</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ Section -->
+                <section class="faq-section card" id="faq" aria-labelledby="faq-heading">
+                    <div class="card-header">
+                        <h2 id="faq-heading">Panduan Edukasi UI/UX & Aksesibilitas bagi Kreator</h2>
+                    </div>
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item">
+                            <h3>
+                                <button class="accordion-trigger" aria-expanded="false" aria-controls="faq1-content"
+                                    id="faq1-btn">
+                                    <span>Apa itu WCAG dan mengapa penting untuk Dashboard ini?</span>
+                                    <i class="ph ph-caret-down accordion-icon" aria-hidden="true"></i>
+                                </button>
+                            </h3>
+                            <div class="accordion-content" id="faq1-content" role="region" aria-labelledby="faq1-btn"
+                                hidden>
+                                <p><strong>WCAG (Web Content Accessibility Guidelines)</strong> adalah panduan
+                                    internasional untuk membuat konten web yang dapat diakses oleh semua orang, termasuk
+                                    penyandang disabilitas (seperti gangguan penglihatan, pendengaran, kognitif, atau
+                                    motorik).</p>
+                                <p>Penting bagi dashboard pembuat konten karena:</p>
+                                <ul>
+                                    <li>Memastikan tombol, grafik, dan analitik dapat dibaca dengan jelas (Kontras
+                                        AA/AAA).</li>
+                                    <li>Memungkinkan navigasi menggunakan Keyboard sepenuhnya tanpa memerlukan mouse.
+                                    </li>
+                                    <li>Memanfaatkan Screen Reader untuk membaca data grafik.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item">
+                            <h3>
+                                <button class="accordion-trigger" aria-expanded="false" aria-controls="faq2-content"
+                                    id="faq2-btn">
+                                    <span>Bagaimana cara terbaik menampilkan data analitik agar inklusif?</span>
+                                    <i class="ph ph-caret-down accordion-icon" aria-hidden="true"></i>
+                                </button>
+                            </h3>
+                            <div class="accordion-content" id="faq2-content" role="region" aria-labelledby="faq2-btn"
+                                hidden>
+                                <p>Dalam UI/UX yang inklusif, data (seperti grafik/chart) **tidak boleh hanya
+                                    mengandalkan warna** untuk membedakan platform (Contoh: merah untuk YouTube, hitam
+                                    untuk TikTok).</p>
+                                <p>Praktik terbaik:</p>
+                                <ul>
+                                    <li>Sertakan label teks langsung di grafik, atau gunakan tooltips yang bisa diakses
+                                        via keyboard.</li>
+                                    <li>Tambahkan pola (patterns) atau gaya garis putus-putus pada garis grafik.</li>
+                                    <li>Selalu sediakan aria-label deskriptif, atau bahkan opsi untuk melihat data
+                                        grafik dalam bentuk <abbr title="Tabel Data">tabel</abbr>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Item 3 -->
+                        <div class="accordion-item">
+                            <h3>
+                                <button class="accordion-trigger" aria-expanded="false" aria-controls="faq3-content"
+                                    id="faq3-btn">
+                                    <span>Apa itu `:focus-visible` dan mengapa ring fokus itu wajib?</span>
+                                    <i class="ph ph-caret-down accordion-icon" aria-hidden="true"></i>
+                                </button>
+                            </h3>
+                            <div class="accordion-content" id="faq3-content" role="region" aria-labelledby="faq3-btn"
+                                hidden>
+                                <p>Seringkali desainer pemula menghapus ring biru (outline) dari browser karena dianggap
+                                    "jelek" menggunakan <code>outline: none;</code>.</p>
+                                <p>Ini merupakan <strong>pelanggaran fatal</strong> dalam asas UI/UX. Orang yang
+                                    menggunakan keyboard (Tab key) tidak akan tahu di mana kursor mereka berada.</p>
+                                <p>Solusinya: Gunakan pseudo-class <code>:focus-visible</code> untuk memberikan gaya
+                                    outline khusus (dengan dua warna yang kontras) yang terlihat harmonis dengan desain,
+                                    tanpa merusak aksesibilitas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="main-footer">
+                    <p>&copy; 2026 Tugas WFA UI/UX | Aep Nh.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- Skip to main content link for keyboard users -->
+    <a href="#main-content" class="skip-link">Lompat ke konten utama</a>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-wrapper" aria-live="polite"></div>
+
+    <!-- Modal Dialog -->
+    <div class="modal-overlay" id="demo-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+        aria-describedby="modal-desc" hidden>
+        <div class="modal-surface" tabindex="-1">
+            <header class="modal-header">
+                <h2 id="modal-title">Konfirmasi Penghapusan</h2>
+                <button class="icon-btn close-modal-btn" aria-label="Tutup dialog" id="close-modal-icon">
+                    <i class="ph ph-x" aria-hidden="true"></i>
+                </button>
+            </header>
+            <div class="modal-body" id="modal-desc">
+                <p>Apakah Anda yakin ingin menghapus video <strong>"Cara Cepat Belajar UI/UX #1"</strong>? Tindakan ini
+                    tidak dapat dibatalkan dan semua data analitik akan hilang permanen.</p>
+            </div>
+            <footer class="modal-footer">
+                <button class="btn btn-secondary close-modal-btn" id="cancel-modal-btn">Batal</button>
+                <button class="btn btn-danger" id="confirm-delete-btn">Ya, Hapus Video</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
